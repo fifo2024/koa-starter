@@ -4,7 +4,7 @@ const session = require("koa-session");
 const views = require("koa-views");
 const fs = require("fs");
 const hbs = require("handlebars");
-// const middleware = require("./middleware");
+const middleware = require("./middleware");
 const layouts = require("handlebars-layouts");
 const routes = require("./routes");
 const renderJson = require("./utils/helper/renderjson");
@@ -36,7 +36,7 @@ const CONFIG = {
 app.use(session(CONFIG, app));
 app.use(routes());
 
-// middleware(app);
+middleware(app);
 
 // 注册组件
 hbs.registerPartial("layout", fs.readFileSync("./views/layout.hbs", "utf8"));
